@@ -2,7 +2,7 @@
   "dependencies": [
     {
       "name": "@aws-cdk/assert",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "build"
     },
     {
@@ -81,11 +81,6 @@
       "type": "build"
     },
     {
-      "name": "standard-version",
-      "version": "^9",
-      "type": "build"
-    },
-    {
       "name": "ts-jest",
       "type": "build"
     },
@@ -95,72 +90,72 @@
     },
     {
       "name": "@aws-cdk/aws-apigateway",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-athena",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-cloudwatch",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-events-targets",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-glue",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-kinesisfirehose",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-s3-notifications",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/aws-wafv2",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
       "name": "@aws-cdk/custom-resources",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "peer"
     },
     {
@@ -170,72 +165,72 @@
     },
     {
       "name": "@aws-cdk/aws-apigateway",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-athena",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-cloudwatch",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-events-targets",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-events",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-glue",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-iam",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-kinesisfirehose",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-lambda",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-s3-notifications",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-s3",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/aws-wafv2",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/core",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     },
     {
       "name": "@aws-cdk/custom-resources",
-      "version": "^1.111.0",
+      "version": "^1.123.0",
       "type": "runtime"
     }
   ],

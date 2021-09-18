@@ -8,10 +8,10 @@ const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 const project = new AwsCdkConstructLibrary({
   author: 'Chris Yang',
   authorUrl: 'https://9incloud.com/',
-  cdkVersion: '1.111.0',
+  cdkVersion: '1.123.0',
   defaultReleaseBranch: 'main',
-  name: 'cdk-automated-waf',
-  repositoryUrl: 'https://github.com/kimisme9386/cdk-automated-waf.git',
+  name: '@iKalaCloud/aws-waf-solution',
+  repositoryUrl: 'https://github.com/iKalaCloud/aws-waf-solution',
   description: 'Cloudfront and ALB with Automated WAF',
   cdkDependencies: [
     '@aws-cdk/core',
@@ -49,6 +49,7 @@ const project = new AwsCdkConstructLibrary({
     },
     ignoreProjen: false,
   }),
+  release: false,
   // update snapshot test by workflow because aws region need undefined
   releaseWorkflowSetupSteps: [
     {
