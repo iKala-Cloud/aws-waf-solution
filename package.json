@@ -1,5 +1,5 @@
 {
-  "name": "@iKalaCloud/aws-waf-solution",
+  "name": "@ikala-cloud/aws-waf-solution",
   "description": "Cloudfront and ALB with Automated WAF",
   "repository": {
     "type": "git",
@@ -135,8 +135,8 @@
     "outdir": "dist",
     "targets": {
       "python": {
-        "distName": "cdk-automated-waf",
-        "module": "cdk-automated-waf"
+        "distName": "ikala-cloud.aws-waf-solution",
+        "module": "ikala-cloud.aws-waf-solution"
       }
     },
     "tsc": {

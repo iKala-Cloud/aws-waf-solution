@@ -10,7 +10,7 @@ const project = new AwsCdkConstructLibrary({
   authorUrl: 'https://9incloud.com/',
   cdkVersion: '1.123.0',
   defaultReleaseBranch: 'main',
-  name: '@iKalaCloud/aws-waf-solution',
+  name: '@ikala-cloud/aws-waf-solution',
   repositoryUrl: 'https://github.com/iKalaCloud/aws-waf-solution',
   description: 'Cloudfront and ALB with Automated WAF',
   cdkDependencies: [
@@ -31,8 +31,8 @@ const project = new AwsCdkConstructLibrary({
   ],
   devDeps: ['projen-automate-it'],
   publishToPypi: {
-    distName: 'cdk-automated-waf',
-    module: 'cdk-automated-waf',
+    distName: 'ikala-cloud.aws-waf-solution',
+    module: 'ikala-cloud.aws-waf-solution',
   },
   catalog: {
     announce: true,
