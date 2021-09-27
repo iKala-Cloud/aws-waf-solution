@@ -1,6 +1,8 @@
 const {
   AwsCdkConstructLibrary,
   DependenciesUpgradeMechanism,
+  Gitpod,
+  DevEnvironmentDockerImage,
 } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
@@ -105,5 +107,40 @@ const common_include = ['/lambda/codepipeline-event/tsconfig.json'];
 
 project.npmignore.include(...common_include);
 project.gitignore.include(...common_include);
+
+// gitpod
+const gitpodPrebuild = project.addTask('gitpod:prebuild', {
+  description: 'Prebuild setup for Gitpod',
+});
+gitpodPrebuild.exec('yarn install --frozen-lockfile --check-files');
+
+let gitpod = new Gitpod(project, {
+  dockerImage: DevEnvironmentDockerImage.fromFile('.gitpod.Dockerfile'),
+  prebuilds: {
+    addCheck: true,
+    addBadge: true,
+    addLabel: true,
+    branches: true,
+    pullRequests: true,
+    pullRequestsFromForks: true,
+  },
+});
+
+gitpod.addCustomTask({
+  name: 'install package and check zsh and zsh plugin',
+  init: `yarn gitpod:prebuild
+sudo chmod +x ./.gitpod/oh-my-zsh.sh && ./.gitpod/oh-my-zsh.sh`,
+});
+
+gitpod.addCustomTask({
+  name: 'change default shell to zsh and start zsh shell',
+  command: 'sudo chsh -s $(which zsh) && zsh',
+});
+
+/* spellchecker: disable */
+gitpod.addVscodeExtensions(
+  'dbaeumer.vscode-eslint',
+  'streetsidesoftware.code-spell-checker-spanish'
+);
 
 project.synth();

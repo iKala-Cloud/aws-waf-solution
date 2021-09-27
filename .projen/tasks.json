@@ -180,6 +180,15 @@
           "exec": "jsii-docgen"
         }
       ]
+    },
+    "gitpod:prebuild": {
+      "name": "gitpod:prebuild",
+      "description": "Prebuild setup for Gitpod",
+      "steps": [
+        {
+          "exec": "yarn install --frozen-lockfile --check-files"
+        }
+      ]
     }
   },
   "env": {

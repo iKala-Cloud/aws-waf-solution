@@ -55,3 +55,4 @@ yarn-error.log
 dependabot.yml
 lambda/codepipeline-event/dist
 !/lambda/codepipeline-event/tsconfig.json
+!/.gitpod.yml
