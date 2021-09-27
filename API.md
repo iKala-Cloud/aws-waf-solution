@@ -2,43 +2,43 @@
 
 ## Constructs <a name="Constructs"></a>
 
-### AutomatedWaf <a name="cdk-automated-waf.AutomatedWaf"></a>
+### AutomatedWaf <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf"></a>
 
-#### Initializers <a name="cdk-automated-waf.AutomatedWaf.Initializer"></a>
+#### Initializers <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.Initializer"></a>
 
 ```typescript
-import { AutomatedWaf } from 'cdk-automated-waf'
+import { AutomatedWaf } from '@ikala-cloud/aws-waf-solution'
 
 new AutomatedWaf(scope: Construct, id: string, props: AutomatedWafProps)
 ```
 
-##### `scope`<sup>Required</sup> <a name="cdk-automated-waf.AutomatedWaf.parameter.scope"></a>
+##### `scope`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.parameter.scope"></a>
 
 - *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
 
 ---
 
-##### `id`<sup>Required</sup> <a name="cdk-automated-waf.AutomatedWaf.parameter.id"></a>
+##### `id`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.parameter.id"></a>
 
 - *Type:* `string`
 
 ---
 
-##### `props`<sup>Required</sup> <a name="cdk-automated-waf.AutomatedWaf.parameter.props"></a>
+##### `props`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.parameter.props"></a>
 
-- *Type:* [`cdk-automated-waf.AutomatedWafProps`](#cdk-automated-waf.AutomatedWafProps)
+- *Type:* [`@ikala-cloud/aws-waf-solution.AutomatedWafProps`](#@ikala-cloud/aws-waf-solution.AutomatedWafProps)
 
 ---
 
 #### Methods <a name="Methods"></a>
 
-##### `validateResourceNamingPrefix` <a name="cdk-automated-waf.AutomatedWaf.validateResourceNamingPrefix"></a>
+##### `validateResourceNamingPrefix` <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.validateResourceNamingPrefix"></a>
 
 ```typescript
 public validateResourceNamingPrefix(resourceNamingPrefix: string)
 ```
 
-###### `resourceNamingPrefix`<sup>Required</sup> <a name="cdk-automated-waf.AutomatedWaf.parameter.resourceNamingPrefix"></a>
+###### `resourceNamingPrefix`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.parameter.resourceNamingPrefix"></a>
 
 - *Type:* `string`
 
@@ -49,27 +49,27 @@ public validateResourceNamingPrefix(resourceNamingPrefix: string)
 
 ## Structs <a name="Structs"></a>
 
-### AutomatedWafProps <a name="cdk-automated-waf.AutomatedWafProps"></a>
+### AutomatedWafProps <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps"></a>
 
 #### Initializer <a name="[object Object].Initializer"></a>
 
 ```typescript
-import { AutomatedWafProps } from 'cdk-automated-waf'
+import { AutomatedWafProps } from '@ikala-cloud/aws-waf-solution'
 
 const automatedWafProps: AutomatedWafProps = { ... }
 ```
 
-##### `waf2Scope`<sup>Required</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.waf2Scope"></a>
+##### `waf2Scope`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.waf2Scope"></a>
 
 ```typescript
 public readonly waf2Scope: Waf2ScopeOption;
 ```
 
-- *Type:* [`cdk-automated-waf.Waf2ScopeOption`](#cdk-automated-waf.Waf2ScopeOption)
+- *Type:* [`@ikala-cloud/aws-waf-solution.Waf2ScopeOption`](#@ikala-cloud/aws-waf-solution.Waf2ScopeOption)
 
 ---
 
-##### `albArn`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.albArn"></a>
+##### `albArn`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.albArn"></a>
 
 ```typescript
 public readonly albArn: string;
@@ -81,7 +81,7 @@ if waf2Scope is REGIONAL, give albArn to associate to waf acl.
 
 ---
 
-##### `appAccessLogBucketName`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.appAccessLogBucketName"></a>
+##### `appAccessLogBucketName`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.appAccessLogBucketName"></a>
 
 ```typescript
 public readonly appAccessLogBucketName: string;
@@ -91,7 +91,7 @@ public readonly appAccessLogBucketName: string;
 
 ---
 
-##### `blockPeriod`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.blockPeriod"></a>
+##### `blockPeriod`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.blockPeriod"></a>
 
 ```typescript
 public readonly blockPeriod: number;
@@ -103,7 +103,7 @@ The period (in minutes) to block applicable IP addresses.
 
 ---
 
-##### `enableShieldAdvancedLambda`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.enableShieldAdvancedLambda"></a>
+##### `enableShieldAdvancedLambda`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.enableShieldAdvancedLambda"></a>
 
 ```typescript
 public readonly enableShieldAdvancedLambda: boolean;
@@ -118,7 +118,7 @@ Default is false
 
 ---
 
-##### `errorThreshold`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.errorThreshold"></a>
+##### `errorThreshold`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.errorThreshold"></a>
 
 ```typescript
 public readonly errorThreshold: number;
@@ -130,17 +130,17 @@ The maximum acceptable bad requests per minute per IP.
 
 ---
 
-##### `logLevel`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.logLevel"></a>
+##### `logLevel`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.logLevel"></a>
 
 ```typescript
 public readonly logLevel: LogLevel;
 ```
 
-- *Type:* [`cdk-automated-waf.LogLevel`](#cdk-automated-waf.LogLevel)
+- *Type:* [`@ikala-cloud/aws-waf-solution.LogLevel`](#@ikala-cloud/aws-waf-solution.LogLevel)
 
 ---
 
-##### `requestThreshold`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.requestThreshold"></a>
+##### `requestThreshold`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.requestThreshold"></a>
 
 ```typescript
 public readonly requestThreshold: number;
@@ -152,7 +152,7 @@ The maximum acceptable requests per FIVE-minute period per IP address.
 
 ---
 
-##### `resourceNamingPrefix`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.resourceNamingPrefix"></a>
+##### `resourceNamingPrefix`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.resourceNamingPrefix"></a>
 
 ```typescript
 public readonly resourceNamingPrefix: string;
@@ -164,7 +164,7 @@ If the construct need to deploy more than one times, specify the property to pre
 
 ---
 
-##### `wafLogBucketName`<sup>Optional</sup> <a name="cdk-automated-waf.AutomatedWafProps.property.wafLogBucketName"></a>
+##### `wafLogBucketName`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.wafLogBucketName"></a>
 
 ```typescript
 public readonly wafLogBucketName: string;
@@ -180,39 +180,39 @@ public readonly wafLogBucketName: string;
 
 ### LogLevel <a name="LogLevel"></a>
 
-#### `DEBUG` <a name="cdk-automated-waf.LogLevel.DEBUG"></a>
+#### `DEBUG` <a name="@ikala-cloud/aws-waf-solution.LogLevel.DEBUG"></a>
 
 ---
 
 
-#### `INFO` <a name="cdk-automated-waf.LogLevel.INFO"></a>
+#### `INFO` <a name="@ikala-cloud/aws-waf-solution.LogLevel.INFO"></a>
 
 ---
 
 
-#### `WARNING` <a name="cdk-automated-waf.LogLevel.WARNING"></a>
+#### `WARNING` <a name="@ikala-cloud/aws-waf-solution.LogLevel.WARNING"></a>
 
 ---
 
 
-#### `ERROR` <a name="cdk-automated-waf.LogLevel.ERROR"></a>
+#### `ERROR` <a name="@ikala-cloud/aws-waf-solution.LogLevel.ERROR"></a>
 
 ---
 
 
-#### `CRITICAL` <a name="cdk-automated-waf.LogLevel.CRITICAL"></a>
+#### `CRITICAL` <a name="@ikala-cloud/aws-waf-solution.LogLevel.CRITICAL"></a>
 
 ---
 
 
 ### Waf2ScopeOption <a name="Waf2ScopeOption"></a>
 
-#### `CLOUDFRONT` <a name="cdk-automated-waf.Waf2ScopeOption.CLOUDFRONT"></a>
+#### `CLOUDFRONT` <a name="@ikala-cloud/aws-waf-solution.Waf2ScopeOption.CLOUDFRONT"></a>
 
 ---
 
 
-#### `REGIONAL` <a name="cdk-automated-waf.Waf2ScopeOption.REGIONAL"></a>
+#### `REGIONAL` <a name="@ikala-cloud/aws-waf-solution.Waf2ScopeOption.REGIONAL"></a>
 
 ---
 
