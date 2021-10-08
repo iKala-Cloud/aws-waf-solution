@@ -53,6 +53,18 @@ Object {
     },
   },
   "Parameters": Object {
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494ArtifactHashC2E6E6C0": Object {
+      "Description": "Artifact hash for asset \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3Bucket33B61C3E": Object {
+      "Description": "S3 bucket for asset \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF": Object {
+      "Description": "S3 key for asset version \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
       "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
@@ -68,7 +80,7 @@ Object {
   },
   "Resources": Object {
     "AutomatedWafAccessLogBucket5A7E0F8F": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "AccessControl": "LogDeliveryWrite",
         "BucketEncryption": Object {
@@ -82,7 +94,7 @@ Object {
         },
       },
       "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafAccessLogBucketAllowBucketNotificationsToTestStackAutomatedWafForCloudFrontAutomatedWafLogParserC89576C2682C2216": Object {
       "Properties": Object {
@@ -127,6 +139,25 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Permission",
+    },
+    "AutomatedWafAccessLogBucketAutoDeleteObjectsCustomResource6D92944F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AutomatedWafAccessLogBucketPolicyE11FCBFA",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "AutomatedWafAccessLogBucket5A7E0F8F",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafAccessLogBucketNotificationsDD364EE6": Object {
       "DependsOn": Array [
@@ -200,6 +231,57 @@ Object {
         },
       },
       "Type": "Custom::S3BucketNotifications",
+    },
+    "AutomatedWafAccessLogBucketPolicyE11FCBFA": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "AutomatedWafAccessLogBucket5A7E0F8F",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "AutomatedWafAccessLogBucket5A7E0F8F",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AutomatedWafAccessLogBucket5A7E0F8F",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
     },
     "AutomatedWafAddAthenaPartitionsB53046F5": Object {
       "DeletionPolicy": "Delete",
@@ -2968,7 +3050,7 @@ Object {
       "Type": "AWS::Athena::WorkGroup",
     },
     "AutomatedWafWafLogBucket2EE15204": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "BucketEncryption": Object {
           "ServerSideEncryptionConfiguration": Array [
@@ -2981,7 +3063,7 @@ Object {
         },
       },
       "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafWafLogBucketAllowBucketNotificationsToTestStackAutomatedWafForCloudFrontAutomatedWafLogParserC89576C26444A3E3": Object {
       "Properties": Object {
@@ -3004,6 +3086,25 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Permission",
+    },
+    "AutomatedWafWafLogBucketAutoDeleteObjectsCustomResource776A478E": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AutomatedWafWafLogBucketPolicy62BAB889",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "AutomatedWafWafLogBucket2EE15204",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafWafLogBucketNotificationsD40C475A": Object {
       "DependsOn": Array [
@@ -3051,6 +3152,57 @@ Object {
         },
       },
       "Type": "Custom::S3BucketNotifications",
+    },
+    "AutomatedWafWafLogBucketPolicy62BAB889": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "AutomatedWafWafLogBucket2EE15204",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "AutomatedWafWafLogBucket2EE15204",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AutomatedWafWafLogBucket2EE15204",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
     },
     "AutomatedWafWhitelistSetIPV44815715F": Object {
       "Properties": Object {
@@ -4353,6 +4505,96 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       },
       "Type": "AWS::IAM::Policy",
     },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": Object {
+      "DependsOn": Array [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3Bucket33B61C3E",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "Lambda function for auto-deleting objects in ",
+              Object {
+                "Ref": "AutomatedWafWafLogBucket2EE15204",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
   },
 }
 `;
@@ -4388,6 +4630,18 @@ Object {
     },
   },
   "Parameters": Object {
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494ArtifactHashC2E6E6C0": Object {
+      "Description": "Artifact hash for asset \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3Bucket33B61C3E": Object {
+      "Description": "S3 bucket for asset \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
+    "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF": Object {
+      "Description": "S3 key for asset version \\"00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494\\"",
+      "Type": "String",
+    },
     "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
       "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
       "Type": "String",
@@ -4403,7 +4657,7 @@ Object {
   },
   "Resources": Object {
     "AutomatedWafAccessLogBucket5A7E0F8F": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "AccessControl": "Private",
         "BucketEncryption": Object {
@@ -4417,7 +4671,7 @@ Object {
         },
       },
       "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafAccessLogBucketAllowBucketNotificationsToTestStackAutomatedWafForALBAutomatedWafLogParser4478D8201AD0BEAA": Object {
       "Properties": Object {
@@ -4462,6 +4716,25 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Permission",
+    },
+    "AutomatedWafAccessLogBucketAutoDeleteObjectsCustomResource6D92944F": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AutomatedWafAccessLogBucketPolicyE11FCBFA",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "AutomatedWafAccessLogBucket5A7E0F8F",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafAccessLogBucketNotificationsDD364EE6": Object {
       "DependsOn": Array [
@@ -4543,6 +4816,44 @@ Object {
         },
         "PolicyDocument": Object {
           "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "AutomatedWafAccessLogBucket5A7E0F8F",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AutomatedWafAccessLogBucket5A7E0F8F",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
             Object {
               "Action": "s3:PutObject",
               "Effect": "Allow",
@@ -6920,7 +7231,7 @@ Object {
       "Type": "AWS::Athena::WorkGroup",
     },
     "AutomatedWafWafLogBucket2EE15204": Object {
-      "DeletionPolicy": "Retain",
+      "DeletionPolicy": "Delete",
       "Properties": Object {
         "BucketEncryption": Object {
           "ServerSideEncryptionConfiguration": Array [
@@ -6933,7 +7244,7 @@ Object {
         },
       },
       "Type": "AWS::S3::Bucket",
-      "UpdateReplacePolicy": "Retain",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafWafLogBucketAllowBucketNotificationsToTestStackAutomatedWafForALBAutomatedWafLogParser4478D8200F00113C": Object {
       "Properties": Object {
@@ -6956,6 +7267,25 @@ Object {
         },
       },
       "Type": "AWS::Lambda::Permission",
+    },
+    "AutomatedWafWafLogBucketAutoDeleteObjectsCustomResource776A478E": Object {
+      "DeletionPolicy": "Delete",
+      "DependsOn": Array [
+        "AutomatedWafWafLogBucketPolicy62BAB889",
+      ],
+      "Properties": Object {
+        "BucketName": Object {
+          "Ref": "AutomatedWafWafLogBucket2EE15204",
+        },
+        "ServiceToken": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F",
+            "Arn",
+          ],
+        },
+      },
+      "Type": "Custom::S3AutoDeleteObjects",
+      "UpdateReplacePolicy": "Delete",
     },
     "AutomatedWafWafLogBucketNotificationsD40C475A": Object {
       "DependsOn": Array [
@@ -7003,6 +7333,57 @@ Object {
         },
       },
       "Type": "Custom::S3BucketNotifications",
+    },
+    "AutomatedWafWafLogBucketPolicy62BAB889": Object {
+      "Properties": Object {
+        "Bucket": Object {
+          "Ref": "AutomatedWafWafLogBucket2EE15204",
+        },
+        "PolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": Array [
+                "s3:GetBucket*",
+                "s3:List*",
+                "s3:DeleteObject*",
+              ],
+              "Effect": "Allow",
+              "Principal": Object {
+                "AWS": Object {
+                  "Fn::GetAtt": Array [
+                    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+                    "Arn",
+                  ],
+                },
+              },
+              "Resource": Array [
+                Object {
+                  "Fn::GetAtt": Array [
+                    "AutomatedWafWafLogBucket2EE15204",
+                    "Arn",
+                  ],
+                },
+                Object {
+                  "Fn::Join": Array [
+                    "",
+                    Array [
+                      Object {
+                        "Fn::GetAtt": Array [
+                          "AutomatedWafWafLogBucket2EE15204",
+                          "Arn",
+                        ],
+                      },
+                      "/*",
+                    ],
+                  ],
+                },
+              ],
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+      },
+      "Type": "AWS::S3::BucketPolicy",
     },
     "AutomatedWafWhitelistSetIPV44815715F": Object {
       "Properties": Object {
@@ -8257,6 +8638,96 @@ def submit_response(event: dict, context, response_status: str, error_message: s
         ],
       },
       "Type": "AWS::IAM::Policy",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderHandler9D90184F": Object {
+      "DependsOn": Array [
+        "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3Bucket33B61C3E",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParameters00f2465b209575c44977ca8ff1c81d86d002849272ede5a8a90ac87dfff1e494S3VersionKeyDE2514FF",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "Description": Object {
+          "Fn::Join": Array [
+            "",
+            Array [
+              "Lambda function for auto-deleting objects in ",
+              Object {
+                "Ref": "AutomatedWafWafLogBucket2EE15204",
+              },
+              " S3 bucket.",
+            ],
+          ],
+        },
+        "Handler": "__entrypoint__.handler",
+        "MemorySize": 128,
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 900,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "CustomS3AutoDeleteObjectsCustomResourceProviderRole3B1BD092": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Sub": "arn:\${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
     },
   },
 }

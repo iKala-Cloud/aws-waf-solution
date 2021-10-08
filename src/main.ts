@@ -144,6 +144,8 @@ export class AutomatedWaf extends cdk.Construct {
       ...wafLogBucketAppendProps,
       publicReadAccess: false,
       encryption: s3.BucketEncryption.KMS_MANAGED,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
 
     const accessLogBucketAppendProps = props.appAccessLogBucketName
@@ -156,6 +158,8 @@ export class AutomatedWaf extends cdk.Construct {
       encryption: s3.BucketEncryption.S3_MANAGED,
       accessControl: 
         props.waf2Scope == Waf2ScopeOption.CLOUDFRONT ? s3.BucketAccessControl.LOG_DELIVERY_WRITE : s3.BucketAccessControl.PRIVATE,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
 
     if (props.waf2Scope == Waf2ScopeOption.REGIONAL) {
