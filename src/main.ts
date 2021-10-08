@@ -153,10 +153,9 @@ export class AutomatedWaf extends cdk.Construct {
     const accessLogBucket = new s3.Bucket(this, 'AccessLogBucket', {
       ...accessLogBucketAppendProps,
       publicReadAccess: false,
-      encryption:
-        props.waf2Scope == Waf2ScopeOption.CLOUDFRONT
-          ? s3.BucketEncryption.KMS_MANAGED
-          : s3.BucketEncryption.S3_MANAGED,
+      encryption: s3.BucketEncryption.S3_MANAGED,
+      accessControl: 
+        props.waf2Scope == Waf2ScopeOption.CLOUDFRONT ? s3.BucketAccessControl.LOG_DELIVERY_WRITE : s3.BucketAccessControl.PRIVATE,
     });
 
     if (props.waf2Scope == Waf2ScopeOption.REGIONAL) {
