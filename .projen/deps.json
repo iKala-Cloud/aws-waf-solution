@@ -99,6 +99,11 @@
       "type": "peer"
     },
     {
+      "name": "@aws-cdk/aws-cloudfront",
+      "version": "^1.123.0",
+      "type": "peer"
+    },
+    {
       "name": "@aws-cdk/aws-cloudwatch",
       "version": "^1.123.0",
       "type": "peer"
@@ -170,6 +175,11 @@
     },
     {
       "name": "@aws-cdk/aws-athena",
+      "version": "^1.123.0",
+      "type": "runtime"
+    },
+    {
+      "name": "@aws-cdk/aws-cloudfront",
       "version": "^1.123.0",
       "type": "runtime"
     },
