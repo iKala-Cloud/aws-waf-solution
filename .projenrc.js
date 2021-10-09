@@ -114,6 +114,8 @@ const gitpodPrebuild = project.addTask('gitpod:prebuild', {
   description: 'Prebuild setup for Gitpod',
 });
 gitpodPrebuild.exec('yarn install --frozen-lockfile --check-files');
+gitpodPrebuild.exec('npx projen upgrade');
+gitpodPrebuild.exec('npm i -g aws-cdk');
 
 let gitpod = new Gitpod(project, {
   dockerImage: DevEnvironmentDockerImage.fromFile('.gitpod.Dockerfile'),

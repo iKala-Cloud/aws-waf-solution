@@ -187,6 +187,12 @@
       "steps": [
         {
           "exec": "yarn install --frozen-lockfile --check-files"
+        },
+        {
+          "exec": "npx projen upgrade"
+        },
+        {
+          "exec": "npm i -g aws-cdk"
         }
       ]
     }
