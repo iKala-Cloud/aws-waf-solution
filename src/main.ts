@@ -65,7 +65,7 @@ export interface AutomatedWafProps {
   /**
    * if waf2Scope is REGIONAL, give albArn to associate to waf acl
    */
-  readonly albArn?: string;
+  readonly associatedResourceArn?: string;
 
   /**
    * If the construct need to deploy more than one times, specify the property to prevent AWS resource name conflict
@@ -755,10 +755,10 @@ export class AutomatedWaf extends cdk.Construct {
       ],
     });
 
-    if (props.albArn) {
+    if (props.associatedResourceArn) {
       new wafv2.CfnWebACLAssociation(this, 'wafAssociation', {
         webAclArn: wafweb.attrArn,
-        resourceArn: props.albArn,
+        resourceArn: props.associatedResourceArn,
       });
     }
 
