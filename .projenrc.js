@@ -1,6 +1,5 @@
 const {
   AwsCdkConstructLibrary,
-  DependenciesUpgradeMechanism,
   Gitpod,
   DevEnvironmentDockerImage,
 } = require('projen');
@@ -46,13 +45,13 @@ const project = new AwsCdkConstructLibrary({
     secret: 'GITHUB_TOKEN',
     allowedUsernames: ['kimisme9386-bot'],
   },
-  depsUpgrade: DependenciesUpgradeMechanism.githubWorkflow({
+  depsUpgradeOptions: {
     workflowOptions: {
       labels: ['auto-approve'],
       secret: AUTOMATION_TOKEN,
     },
     ignoreProjen: false,
-  }),
+  },
   release: false,
   // update snapshot test by workflow because aws region need undefined
   releaseWorkflowSetupSteps: [
@@ -109,6 +108,20 @@ const common_include = ['/lambda/codepipeline-event/tsconfig.json'];
 
 project.npmignore.include(...common_include);
 project.gitignore.include(...common_include);
+
+// integration test
+const cdkDiffInteg = project.addTask('cdk:diff-integ', {
+  description: 'cdk diff for integration test',
+});
+
+cdkDiffInteg.exec('cdk diff --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never')
+
+const cdkDeployInteg = project.addTask('cdk:deploy-integ', {
+  description: 'cdk diff for integration test',
+});
+
+cdkDeployInteg.exec('cdk deploy --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never')
+
 
 // gitpod
 const gitpodPrebuild = project.addTask('gitpod:prebuild', {

@@ -115,7 +115,19 @@
       },
       "steps": [
         {
-          "exec": "npm-check-updates --upgrade --target=minor"
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
         },
         {
           "exec": "yarn install --check-files"
@@ -178,6 +190,24 @@
       "steps": [
         {
           "exec": "jsii-docgen"
+        }
+      ]
+    },
+    "cdk:diff-integ": {
+      "name": "cdk:diff-integ",
+      "description": "cdk diff for integration test",
+      "steps": [
+        {
+          "exec": "cdk diff --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never"
+        }
+      ]
+    },
+    "cdk:deploy-integ": {
+      "name": "cdk:deploy-integ",
+      "description": "cdk diff for integration test",
+      "steps": [
+        {
+          "exec": "cdk deploy --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never"
         }
       ]
     },

@@ -20,6 +20,8 @@
     "eslint": "npx projen eslint",
     "compat": "npx projen compat",
     "docgen": "npx projen docgen",
+    "cdk:diff-integ": "npx projen cdk:diff-integ",
+    "cdk:deploy-integ": "npx projen cdk:deploy-integ",
     "gitpod:prebuild": "npx projen gitpod:prebuild",
     "projen": "npx projen"
   },
