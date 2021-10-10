@@ -31,6 +31,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/custom-resources',
     '@aws-cdk/aws-apigateway',
     '@aws-cdk/aws-cloudfront',
+    '@aws-cdk/aws-apigateway',
   ],
   devDeps: ['projen-automate-it'],
   publishToPypi: {
