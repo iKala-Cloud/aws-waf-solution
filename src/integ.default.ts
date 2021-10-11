@@ -69,8 +69,23 @@ export class IntegTesting {
     });
 
 
+    /**
+     * Test For ALB on count mode
+     */
+     const stackTest4 = new cdk.Stack(app, 'TestStackAutomatedWafForALBOnCountMode', { env });
+ 
+     new AutomatedWaf(stackTest4, 'AutomatedWaf', {
+       waf2Scope: Waf2ScopeOption.REGIONAL,
+       countMode: true,
+       resourceNamingPrefix: 'Alb_CountMode',
+       errorThreshold: 50,
+       requestThreshold: 300,
+       blockPeriod: 60,
+       logLevel: LogLevel.DEBUG,
+     });
+
     app.synth();
-    this.stack = [stackTest1, stackTest2];
+    this.stack = [stackTest1, stackTest2, stackTest3, stackTest4];
   }
 }
 
