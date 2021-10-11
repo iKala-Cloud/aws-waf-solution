@@ -12,7 +12,7 @@ The solution use CDK construct to automatically deploy a set of AWS WAF rules de
 
 - The project is CDK Construct which is handy to integrate into your existing CDK project.
 
-- Support count mode.
+- Support count mode for testing WAF rule, see [API.md](https://github.com/iKala-Cloud/aws-waf-solution/blob/main/API.md#countmodeoptional-).
 
 - Support Application Load Balancers and API Gateway (The origin repository doesn't support ALB any more in next release, see [issue](https://github.com/awslabs/aws-cloudfront-extensions/issues/164) )
 
