@@ -67,17 +67,9 @@ public readonly waf2Scope: Waf2ScopeOption;
 
 - *Type:* [`@ikala-cloud/aws-waf-solution.Waf2ScopeOption`](#@ikala-cloud/aws-waf-solution.Waf2ScopeOption)
 
----
+CLOUDFRONT or REGIONAL.
 
-##### `albArn`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.albArn"></a>
-
-```typescript
-public readonly albArn: string;
-```
-
-- *Type:* `string`
-
-if waf2Scope is REGIONAL, give albArn to associate to waf acl.
+If use REGIONAL, it support ALB、API Gateway
 
 ---
 
@@ -88,6 +80,20 @@ public readonly appAccessLogBucketName: string;
 ```
 
 - *Type:* `string`
+
+---
+
+##### `associatedResourceArn`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.associatedResourceArn"></a>
+
+```typescript
+public readonly associatedResourceArn: string;
+```
+
+- *Type:* `string`
+
+Only support ALB arn or API Gateway arn when waf2Scope is Regional.
+
+This property doesn't support CloudFront arn because it is restricted by CloudFormation `AWS::WAFv2::WebACLAssociation` , see more details: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webaclassociation.html#cfn-wafv2-webaclassociation-resourcearndetails:
 
 ---
 
@@ -128,6 +134,8 @@ public readonly errorThreshold: number;
 
 The maximum acceptable bad requests per minute per IP.
 
+:warning: The property map WAF `Scanners and Probes` Rule which support only CloudFront and ALB.
+
 ---
 
 ##### `logLevel`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.logLevel"></a>
@@ -137,6 +145,8 @@ public readonly logLevel: LogLevel;
 ```
 
 - *Type:* [`@ikala-cloud/aws-waf-solution.LogLevel`](#@ikala-cloud/aws-waf-solution.LogLevel)
+
+Valid value is 'INFO', 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'.
 
 ---
 
@@ -161,6 +171,8 @@ public readonly resourceNamingPrefix: string;
 - *Type:* `string`
 
 If the construct need to deploy more than one times, specify the property to prevent AWS resource name conflict.
+
+(The property only allow alphanumeric and "_" symbol because glue database naming is needed)
 
 ---
 
