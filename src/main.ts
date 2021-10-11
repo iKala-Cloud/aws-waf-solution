@@ -57,23 +57,27 @@ const Elastic_Load_Balancing_account_ID: { [key: string]: string } = {
 };
 
 export interface AutomatedWafProps {
+  /**
+   * CLOUDFRONT or REGIONAL. If use REGIONAL, it support ALB、API Gateway
+   */
   readonly waf2Scope: Waf2ScopeOption;
 
-  readonly appAccessLogBucketName?: string;
-  readonly wafLogBucketName?: string;
-
   /**
-   * if waf2Scope is REGIONAL, give albArn to associate to waf acl
+   * Only support ALB arn or API Gateway arn when waf2Scope is Regional.
+   *
+   * This property doesn't support CloudFront arn because it is restricted by CloudFormation `AWS::WAFv2::WebACLAssociation` , see more details: https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-wafv2-webaclassociation.html#cfn-wafv2-webaclassociation-resourcearndetails:
    */
   readonly associatedResourceArn?: string;
 
   /**
-   * If the construct need to deploy more than one times, specify the property to prevent AWS resource name conflict
+   * If the construct need to deploy more than one times, specify the property to prevent AWS resource name conflict. (The property only allow alphanumeric and "_" symbol because glue database naming is needed)
    */
   readonly resourceNamingPrefix?: string;
 
   /**
    * The maximum acceptable bad requests per minute per IP.
+   *
+   * :warning: The property map WAF `Scanners and Probes` Rule which support only CloudFront and ALB.
    */
   readonly errorThreshold?: number;
 
@@ -94,7 +98,14 @@ export interface AutomatedWafProps {
    */
   readonly enableShieldAdvancedLambda?: boolean;
 
+  /**
+   * Valid value is 'INFO', 'DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'
+   */
   readonly logLevel?: LogLevel;
+
+  readonly wafLogBucketName?: string;
+
+  readonly appAccessLogBucketName?: string;
 }
 
 export class AutomatedWaf extends cdk.Construct {
@@ -156,7 +167,7 @@ export class AutomatedWaf extends cdk.Construct {
       ...accessLogBucketAppendProps,
       publicReadAccess: false,
       encryption: s3.BucketEncryption.S3_MANAGED,
-      accessControl: 
+      accessControl:
         props.waf2Scope == Waf2ScopeOption.CLOUDFRONT ? s3.BucketAccessControl.LOG_DELIVERY_WRITE : s3.BucketAccessControl.PRIVATE,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       autoDeleteObjects: true,
