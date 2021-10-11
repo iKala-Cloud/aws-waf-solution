@@ -145,10 +145,3 @@ Received response status [FAILED] from custom resource. Message returned: 'HttpF
 ```
 
 If any custom resource deploy error like above, delete the stack and redeploy it that will pass.
-
-## Modified items
-
-- CDK structure refactor from CDK Stack to CDK Construct
-- Add optional `enableShieldAdvancedLambda` property on construct because AWS Shield advance need [$3000 Monthly Fee](https://aws.amazon.com/shield/pricing/?nc1=h_ls)
-- Lambda deployment use docker image on CDK (DockerImageFunction)
-- Fix glue table schema for ALB access log
