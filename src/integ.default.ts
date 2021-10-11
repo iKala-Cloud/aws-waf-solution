@@ -56,7 +56,7 @@ export class IntegTesting {
     /**
      * Ref Stage arn in https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
      */
-    const restApiArn = `arn:aws:apigateway:${cdk.Aws.REGION}::/restapis/0j90w09yf9/stages/prod`
+    const restApiArn = `arn:aws:apigateway:${cdk.Aws.REGION}::/restapis/0j90w09yf9/stages/prod`;
 
     new AutomatedWaf(stackTest3, 'AutomatedWaf', {
       waf2Scope: Waf2ScopeOption.REGIONAL,
