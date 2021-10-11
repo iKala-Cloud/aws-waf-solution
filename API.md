@@ -109,6 +109,20 @@ The period (in minutes) to block applicable IP addresses.
 
 ---
 
+##### `countMode`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.countMode"></a>
+
+```typescript
+public readonly countMode: boolean;
+```
+
+- *Type:* `boolean`
+
+Test your WAF rules, see more details: [AWS WAF rule action](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-action.html).
+
+Default is false
+
+---
+
 ##### `enableShieldAdvancedLambda`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.enableShieldAdvancedLambda"></a>
 
 ```typescript
@@ -135,6 +149,8 @@ The maximum acceptable bad requests per minute per IP.
 
 :warning: The property map WAF `Scanners and Probes` Rule which support only CloudFront and ALB.
 
+Default is 200
+
 ---
 
 ##### `logLevel`<sup>Optional</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWafProps.property.logLevel"></a>
@@ -158,6 +174,8 @@ public readonly requestThreshold: number;
 - *Type:* `number`
 
 The maximum acceptable requests per FIVE-minute period per IP address.
+
+Default is 1000
 
 ---
 

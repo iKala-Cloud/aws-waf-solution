@@ -64,7 +64,7 @@ export interface AutomatedWafProps {
 
   /**
    * Test your WAF rules, see more details: [AWS WAF rule action](https://docs.aws.amazon.com/waf/latest/developerguide/waf-rule-action.html)
-   * 
+   *
    * Default is false
    */
   readonly countMode?: boolean;
@@ -85,11 +85,15 @@ export interface AutomatedWafProps {
    * The maximum acceptable bad requests per minute per IP.
    *
    * :warning: The property map WAF `Scanners and Probes` Rule which support only CloudFront and ALB.
+   *
+   * Default is 200
    */
   readonly errorThreshold?: number;
 
   /**
    * The maximum acceptable requests per FIVE-minute period per IP address.
+   *
+   * Default is 1000
    */
   readonly requestThreshold?: number;
 
@@ -131,9 +135,9 @@ export class AutomatedWaf extends cdk.Construct {
     }
 
     //default value
-    const errorThreshold = props.errorThreshold ?? 50;
+    const errorThreshold = props.errorThreshold ?? 200;
     const countMode = props.countMode ?? false;
-    const requestThreshold = props.requestThreshold ?? 100;
+    const requestThreshold = props.requestThreshold ?? 1000;
     const blockPeriod = props.blockPeriod ?? 240;
     const enableShieldAdvancedLambda =
       props.enableShieldAdvancedLambda ?? false;
@@ -345,10 +349,10 @@ export class AutomatedWaf extends cdk.Construct {
         name: badBotRuleName,
         priority: 7,
         action: !countMode
-        ? {
-          block: {},
-        }
-        : { count: {} },
+          ? {
+            block: {},
+          }
+          : { count: {} },
         visibilityConfig: {
           sampledRequestsEnabled: true,
           cloudWatchMetricsEnabled: true,
@@ -395,10 +399,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: 'AWS-AWSManagedRulesCommonRuleSet',
           priority: 0,
           overrideAction: !countMode
-          ? {
-            none: {},
-          }
-          : { count: {} },
+            ? {
+              none: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             cloudWatchMetricsEnabled: true,
             sampledRequestsEnabled: true,
@@ -417,10 +421,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: allowListName,
           priority: 1,
           action: !countMode
-          ? {
-            allow: {},
-          }
-          : { count: {} },
+            ? {
+              allow: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -453,11 +457,11 @@ export class AutomatedWaf extends cdk.Construct {
           name: blacklistRuleName,
           priority: 2,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
-  
+            ? {
+              block: {},
+            }
+            : { count: {} },
+
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -490,10 +494,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: httpFloodRegularRuleName,
           priority: 3,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
+            ? {
+              block: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -526,11 +530,11 @@ export class AutomatedWaf extends cdk.Construct {
           name: scannersProbesRuleName,
           priority: 5,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
-  
+            ? {
+              block: {},
+            }
+            : { count: {} },
+
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -563,10 +567,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: reputationListName,
           priority: 6,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
+            ? {
+              block: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -599,10 +603,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: sqlInjectionRuleName,
           priority: 20,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
+            ? {
+              block: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
@@ -704,10 +708,10 @@ export class AutomatedWaf extends cdk.Construct {
           name: xssRuleName,
           priority: 30,
           action: !countMode
-          ? {
-            block: {},
-          }
-          : { count: {} },
+            ? {
+              block: {},
+            }
+            : { count: {} },
           visibilityConfig: {
             sampledRequestsEnabled: true,
             cloudWatchMetricsEnabled: true,
