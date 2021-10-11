@@ -114,13 +114,13 @@ const cdkDiffInteg = project.addTask('cdk:diff-integ', {
   description: 'cdk diff for integration test',
 });
 
-cdkDiffInteg.exec('cdk diff --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never')
+cdkDiffInteg.exec('cdk diff --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never');
 
 const cdkDeployInteg = project.addTask('cdk:deploy-integ', {
   description: 'cdk diff for integration test',
 });
 
-cdkDeployInteg.exec('cdk deploy --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never')
+cdkDeployInteg.exec('cdk deploy --app "npx ts-node --prefer-ts-exts src/integ.default.ts" -R --require-approval never');
 
 
 // gitpod
