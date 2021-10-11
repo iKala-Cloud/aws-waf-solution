@@ -22,9 +22,7 @@ The solution use CDK construct to automatically deploy a set of AWS WAF rules de
 
 Ref [API Reference](API.md)
 
-## Usage
-
-### CloudFront
+## CloudFront Usage
 
 ```ts
 const envUSEast1 = {
@@ -32,9 +30,6 @@ const envUSEast1 = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-/**
- * Test WAF for CloudFront
- */
 new cdk.Stack(app, 'TestStackAutomatedWafForCloudFront', { env: envUSEast1 });
 
 new AutomatedWaf(stackTest1, 'AutomatedWaf', {
@@ -74,7 +69,71 @@ Set CloudFront standard logging on CloudFront Settings
 
 ![CloudFront-2](https://user-images.githubusercontent.com/7465652/136758273-95ae32c3-091a-4bef-a9de-57406ceee3b6.jpg)
 
-:warning: Log Prefix must be "AWSLogs/"
+:warning: Log Prefix must be `AWSLogs/`
+
+## Application Load Balancers Usage
+
+```ts
+const env = {
+  region: process.env.CDK_DEFAULT_REGION,
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+};
+
+new cdk.Stack(app, 'TestStackAutomatedWafForALB', { env });
+
+const albArn = `arn:aws:elasticloadbalancing:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:loadbalancer/app/ApiNe-Alb16-2VIC9075YQEZ/db92cdc88d2e7c9d`;
+
+new AutomatedWaf(stackTest2, 'AutomatedWaf', {
+  waf2Scope: Waf2ScopeOption.REGIONAL,
+  associatedResourceArn: albArn,
+  resourceNamingPrefix: 'Alb_Api',
+  errorThreshold: 50,
+  requestThreshold: 300,
+  blockPeriod: 60,
+  logLevel: LogLevel.DEBUG,
+});
+```
+
+After deploying, follow these steps on AWS Management Console. See below:
+
+Find S3 bucket name on CloudFormation output
+
+![CloudFront-1](https://user-images.githubusercontent.com/7465652/136758257-9dd42b8d-163e-4775-aba4-da33358d9497.jpg)
+
+
+Click `Edit Attributes` on Basic Configuration of Load Balancers
+
+![ALB-1](https://user-images.githubusercontent.com/7465652/136764403-4a02a436-c799-4cb4-85b9-c221696a1f9e.jpg)
+
+Enable Access logs and input S3 bucket
+
+![ALB-2](https://user-images.githubusercontent.com/7465652/136764407-985d48ed-323c-4aad-b210-72ae09648845.jpg)
+
+## API Gateway Usage
+
+```ts
+const env = {
+  region: process.env.CDK_DEFAULT_REGION,
+  account: process.env.CDK_DEFAULT_ACCOUNT,
+};
+
+new cdk.Stack(app, 'TestStackAutomatedWafForApiGW', { env });
+
+/**
+ * Ref Stage arn in https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
+ */
+const restApiArn = `arn:aws:apigateway:${cdk.Aws.REGION}::/restapis/0j90w09yf9/stages/prod`;
+
+new AutomatedWaf(stackTest3, 'AutomatedWaf', {
+  waf2Scope: Waf2ScopeOption.REGIONAL,
+  associatedResourceArn: restApiArn,
+  resourceNamingPrefix: 'ApiGW',
+  errorThreshold: 50,
+  requestThreshold: 300,
+  blockPeriod: 60,
+  logLevel: LogLevel.DEBUG,
+});
+```
 
 
 ## Troubleshooting
