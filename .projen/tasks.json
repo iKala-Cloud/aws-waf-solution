@@ -198,7 +198,7 @@
       "description": "cdk diff for integration test",
       "steps": [
         {
-          "exec": "cdk diff --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never"
+          "exec": "cdk diff --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never --all"
         }
       ]
     },
@@ -207,7 +207,7 @@
       "description": "cdk diff for integration test",
       "steps": [
         {
-          "exec": "cdk deploy --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never"
+          "exec": "cdk deploy --app \"npx ts-node --prefer-ts-exts src/integ.default.ts\" -R --require-approval never --all"
         }
       ]
     },
