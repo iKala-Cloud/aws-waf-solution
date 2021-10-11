@@ -92,7 +92,8 @@ export interface AutomatedWafProps {
   readonly blockPeriod?: number;
 
   /**
-   *  Enable or disable AWS Shield Advance (:warning: it need [$3000 Monthly Fee](https://aws.amazon.com/shield/pricing/?nc1=h_ls)
+   *  Enable or disable AWS Shield Advance (:warning: it need [$3000 Monthly Fee](https://aws.amazon.com/shield/pricing/?nc1=h_ls))
+   *
    *  Default is false
    */
   readonly enableShieldAdvancedLambda?: boolean;

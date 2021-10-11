@@ -117,7 +117,9 @@ public readonly enableShieldAdvancedLambda: boolean;
 
 - *Type:* `boolean`
 
-Enable or disable AWS Shield Advance (:warning: it need [$3000 Monthly Fee](https://aws.amazon.com/shield/pricing/?nc1=h_ls) Default is false.
+Enable or disable AWS Shield Advance (:warning: it need [$3000 Monthly Fee](https://aws.amazon.com/shield/pricing/?nc1=h_ls)).
+
+Default is false
 
 ---
 
