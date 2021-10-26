@@ -3,8 +3,11 @@
 /test-reports/
 junit.xml
 /coverage/
+/dist/changelog.md
+/dist/version.txt
 /.mergify.yml
 /test/
+/tsconfig.dev.json
 /src/
 !/lib/
 !/lib/**/*.js
@@ -16,14 +19,11 @@ dist
 /.idea/
 /.projenrc.js
 tsconfig.tsbuildinfo
-/tsconfig.jest.json
 /.eslintrc.json
-/tsconfig.eslint.json
 !.jsii
 cdk.out
 cdk.context.json
 images
 yarn-error.log
 dependabot.yml
-lambda/codepipeline-event/dist
 !/lambda/codepipeline-event/tsconfig.json

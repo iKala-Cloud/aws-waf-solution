@@ -12,8 +12,8 @@ const project = new AwsCdkConstructLibrary({
   cdkVersion: '1.123.0',
   defaultReleaseBranch: 'main',
   name: '@ikala-cloud/aws-waf-solution',
-  repositoryUrl: 'https://github.com/iKalaCloud/aws-waf-solution',
-  description: 'Cloudfront and ALB with Automated WAF',
+  repositoryUrl: 'https://github.com/iKala-Cloud/aws-waf-solution',
+  description: 'Cloudfront,ALB and API Gateway with Automated WAF',
   cdkDependencies: [
     '@aws-cdk/core',
     '@aws-cdk/aws-iam',
@@ -33,6 +33,7 @@ const project = new AwsCdkConstructLibrary({
     '@aws-cdk/aws-apigateway',
   ],
   devDeps: ['projen-automate-it'],
+  keywords: ['ikala', 'waf', 'cdk', 'solution'],
   publishToPypi: {
     distName: 'ikala-cloud.aws-waf-solution',
     module: 'ikala-cloud.aws-waf-solution',
@@ -52,31 +53,7 @@ const project = new AwsCdkConstructLibrary({
     },
     ignoreProjen: false,
   },
-  release: false,
-  // update snapshot test by workflow because aws region need undefined
-  releaseWorkflowSetupSteps: [
-    {
-      name: 'run build',
-      run: 'yarn build',
-    },
-    {
-      name: 'run test',
-      run: 'yarn test',
-    },
-    {
-      name: 'run test update',
-      run: 'yarn test:update',
-    },
-    {
-      uses: 'EndBug/add-and-commit@v7',
-      with: {
-        add: 'test',
-        author_name: 'Chris Yang',
-        author_email: 'kimisme9386@gmail.com',
-        message: 'fix: update test snapshot',
-      },
-    },
-  ],
+  release: true,
 });
 
 project.eslint.addRules({
@@ -98,7 +75,6 @@ const common_exclude = [
   'images',
   'yarn-error.log',
   'dependabot.yml',
-  'lambda/codepipeline-event/dist',
 ];
 
 project.npmignore.exclude(...common_exclude);

@@ -38,18 +38,6 @@
       "steps": [
         {
           "exec": "jsii --silence-warnings=reserved-word --no-fix-peer-dependencies"
-        },
-        {
-          "spawn": "docgen"
-        }
-      ]
-    },
-    "test:compile": {
-      "name": "test:compile",
-      "description": "compiles the test code",
-      "steps": [
-        {
-          "exec": "tsc --noEmit --project tsconfig.jest.json"
         }
       ]
     },
@@ -59,9 +47,6 @@
       "steps": [
         {
           "exec": "rm -fr lib/"
-        },
-        {
-          "spawn": "test:compile"
         },
         {
           "exec": "jest --passWithNoTests --all --updateSnapshot"
@@ -86,6 +71,9 @@
         },
         {
           "spawn": "package"
+        },
+        {
+          "spawn": "docgen"
         }
       ]
     },
@@ -107,36 +95,48 @@
         }
       ]
     },
-    "upgrade": {
-      "name": "upgrade",
-      "description": "upgrade dependencies",
+    "bump": {
+      "name": "bump",
+      "description": "Bumps version based on latest git tag and generates a changelog entry",
       "env": {
-        "CI": "0"
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt"
       },
       "steps": [
         {
-          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
-        },
+          "builtin": "release/bump-version"
+        }
+      ],
+      "condition": "! git log --oneline -1 | grep -q \"chore(release):\""
+    },
+    "unbump": {
+      "name": "unbump",
+      "description": "Restores version to 0.0.0",
+      "env": {
+        "OUTFILE": "package.json",
+        "CHANGELOG": "dist/changelog.md",
+        "BUMPFILE": "dist/version.txt",
+        "RELEASETAG": "dist/releasetag.txt"
+      },
+      "steps": [
         {
-          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
-        },
+          "builtin": "release/reset-version"
+        }
+      ]
+    },
+    "publish:github": {
+      "name": "publish:github",
+      "description": "Publish this package to GitHub Releases",
+      "requiredEnv": [
+        "GITHUB_TOKEN",
+        "GITHUB_REPOSITORY",
+        "GITHUB_REF"
+      ],
+      "steps": [
         {
-          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
-        },
-        {
-          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
-        },
-        {
-          "exec": "yarn install --check-files"
-        },
-        {
-          "exec": "yarn upgrade"
-        },
-        {
-          "exec": "npx projen"
+          "exec": "errout=$(mktemp); gh release create $(cat dist/releasetag.txt) -R $GITHUB_REPOSITORY -F dist/changelog.md -t $(cat dist/releasetag.txt) --target $GITHUB_REF 2> $errout && true; exitcode=$?; if [ $exitcode -ne 0 ] && ! grep -q \"Release.tag_name already exists\" $errout; then cat $errout; exit $exitcode; fi"
         }
       ]
     },
@@ -184,6 +184,35 @@
         }
       ]
     },
+    "publish:npm": {
+      "name": "publish:npm",
+      "description": "Publish this package to npm",
+      "env": {
+        "NPM_DIST_TAG": "latest",
+        "NPM_REGISTRY": "registry.npmjs.org"
+      },
+      "requiredEnv": [
+        "NPM_TOKEN"
+      ],
+      "steps": [
+        {
+          "exec": "npx -p jsii-release@latest jsii-release-npm"
+        }
+      ]
+    },
+    "publish:pypi": {
+      "name": "publish:pypi",
+      "description": "Publish this package to PyPI",
+      "requiredEnv": [
+        "TWINE_USERNAME",
+        "TWINE_PASSWORD"
+      ],
+      "steps": [
+        {
+          "exec": "npx -p jsii-release@latest jsii-release-pypi"
+        }
+      ]
+    },
     "docgen": {
       "name": "docgen",
       "description": "Generate API.md from .jsii manifest",
@@ -223,6 +252,63 @@
         },
         {
           "exec": "npm i -g aws-cdk"
+        }
+      ]
+    },
+    "release": {
+      "name": "release",
+      "description": "Prepare a release from \"main\" branch",
+      "env": {
+        "RELEASE": "true"
+      },
+      "steps": [
+        {
+          "exec": "rm -fr dist"
+        },
+        {
+          "spawn": "bump"
+        },
+        {
+          "spawn": "build"
+        },
+        {
+          "spawn": "unbump"
+        },
+        {
+          "exec": "git diff --ignore-space-at-eol --exit-code"
+        }
+      ]
+    },
+    "upgrade": {
+      "name": "upgrade",
+      "description": "upgrade dependencies",
+      "env": {
+        "CI": "0"
+      },
+      "steps": [
+        {
+          "exec": "npm-check-updates --dep dev --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep optional --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep peer --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep prod --upgrade --target=minor"
+        },
+        {
+          "exec": "npm-check-updates --dep bundle --upgrade --target=minor"
+        },
+        {
+          "exec": "yarn install --check-files"
+        },
+        {
+          "exec": "yarn upgrade"
+        },
+        {
+          "exec": "npx projen"
         }
       ]
     }
