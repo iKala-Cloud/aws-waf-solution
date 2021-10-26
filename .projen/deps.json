@@ -77,10 +77,6 @@
       "type": "build"
     },
     {
-      "name": "projen-automate-it",
-      "type": "build"
-    },
-    {
       "name": "standard-version",
       "version": "^9",
       "type": "build"

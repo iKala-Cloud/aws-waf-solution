@@ -1,6 +1,6 @@
 [![NPM version](https://badge.fury.io/js/cdk-automated-waf.svg)](https://badge.fury.io/js/cdk-automated-waf)
-[![PyPI version](https://badge.fury.io/py/cdk-automated-waf.svg)](https://badge.fury.io/py/cdk-automated-waf)
-[![release](https://github.com/kimisme9386/cdk-automated-waf/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/kimisme9386/cdk-automated-waf/actions/workflows/release.yml)
+[![PyPI version](https://badge.fury.io/py/ikala-cloud.aws-waf-solution.svg)](https://badge.fury.io/py/ikala-cloud.aws-waf-solution)
+[![release](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml/badge.svg)](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml)
 
 # AWS WAF Solution
 

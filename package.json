@@ -54,7 +54,6 @@
     "json-schema": "^0.3.0",
     "npm-check-updates": "^11",
     "projen": "^0.31.13",
-    "projen-automate-it": "^0.0.9",
     "standard-version": "^9",
     "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
