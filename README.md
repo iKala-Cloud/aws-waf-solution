@@ -1,4 +1,4 @@
-[![NPM version](https://badge.fury.io/js/cdk-automated-waf.svg)](https://badge.fury.io/js/cdk-automated-waf)
+[![NPM version](https://badge.fury.io/js/@ikala-cloud%2Faws-waf-solution.svg)](https://badge.fury.io/js/@ikala-cloud%2Faws-waf-solution)
 [![PyPI version](https://badge.fury.io/py/ikala-cloud.aws-waf-solution.svg)](https://badge.fury.io/py/ikala-cloud.aws-waf-solution)
 [![release](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml/badge.svg)](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml)
 
