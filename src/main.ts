@@ -810,7 +810,10 @@ export class AutomatedWaf extends cdk.Construct {
       description:
         "This lambda function verifies the main project's dependencies, requirements and implement auxiliary functions.",
       code: lambda.DockerImageCode.fromImageAsset(
-        path.join(__dirname, '../source/helper')
+        path.join(__dirname, '../source/helper'),
+        {
+          cmd: ['helper.lambda_handler'],
+        }
       ),
       memorySize: 512,
       timeout: cdk.Duration.seconds(300),
@@ -890,7 +893,10 @@ export class AutomatedWaf extends cdk.Construct {
       description:
         'This lambda function counts X seconds and can be used to slow down component creation in CloudFormation',
       code: lambda.DockerImageCode.fromImageAsset(
-        path.join(__dirname, '../source/timer')
+        path.join(__dirname, '../source/timer'),
+        {
+          cmd: ['timer.lambda_handler'],
+        }
       ),
       memorySize: 128,
       timeout: cdk.Duration.seconds(300),
@@ -968,7 +974,10 @@ export class AutomatedWaf extends cdk.Construct {
         description:
           'This lambda function checks third-party IP reputation lists hourly for new IP ranges to block. These lists include the Spamhaus Dont Route Or Peer (DROP) and Extended Drop (EDROP) lists, the Proofpoint Emerging Threats IP list, and the Tor exit node list.',
         code: lambda.DockerImageCode.fromImageAsset(
-          path.join(__dirname, '../source/reputation_lists_parser')
+          path.join(__dirname, '../source/reputation_lists_parser'),
+          {
+            cmd: ['reputation-lists.lambda_handler'],
+          }
         ),
         memorySize: 512,
         timeout: cdk.Duration.seconds(300),
@@ -1084,7 +1093,10 @@ export class AutomatedWaf extends cdk.Construct {
         description:
           'This lambda function create an AWS Shield resource protection and protection group for the cloudfront resource.',
         code: lambda.DockerImageCode.fromImageAsset(
-          path.join(__dirname, '../source/shield_protection')
+          path.join(__dirname, '../source/shield_protection'),
+          {
+            cmd: ['shield-protection.lambda_handler'],
+          }
         ),
         memorySize: 512,
         timeout: cdk.Duration.seconds(300),
@@ -1163,7 +1175,10 @@ export class AutomatedWaf extends cdk.Construct {
             'This lambda function will intercepts and inspects trap endpoint requests to extract its IP address, and then add it to an AWS WAF block list.',
           role: badBotRole,
           code: lambda.DockerImageCode.fromImageAsset(
-            path.join(__dirname, '../source/access_handler')
+            path.join(__dirname, '../source/access_handler'),
+            {
+              cmd: ['access-handler.lambda_handler'],
+            }
           ),
           memorySize: 512,
           timeout: cdk.Duration.seconds(300),
@@ -1213,7 +1228,10 @@ export class AutomatedWaf extends cdk.Construct {
         description:
           'This lambda function configures the Web ACL rules based on the features enabled in the CloudFormation template.',
         code: lambda.DockerImageCode.fromImageAsset(
-          path.join(__dirname, '../source/custom_resource')
+          path.join(__dirname, '../source/custom_resource'),
+          {
+            cmd: ['custom-resource.lambda_handler'],
+          }
         ),
         memorySize: 512,
         timeout: cdk.Duration.seconds(300),

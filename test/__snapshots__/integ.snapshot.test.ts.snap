@@ -907,6 +907,11 @@ Object {
             "UUID": "CreateUniqueID.UUID",
           },
         },
+        "ImageConfig": Object {
+          "Command": Array [
+            "access-handler.lambda_handler",
+          ],
+        },
         "MemorySize": 512,
         "PackageType": "Image",
         "Role": Object {
@@ -1208,6 +1213,11 @@ Object {
             "SCOPE": "CLOUDFRONT",
             "SOLUTION_ID": "SO8128",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "custom-resource.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -1513,6 +1523,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SECONDS": "2",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "timer.lambda_handler",
+          ],
         },
         "MemorySize": 128,
         "PackageType": "Image",
@@ -1885,6 +1900,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SCOPE": "CLOUDFRONT",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "helper.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -2873,6 +2893,11 @@ Object {
             },
             "URL_LIST": "[{\\"url\\":\\"https://www.spamhaus.org/drop/drop.txt\\"},{\\"url\\":\\"https://www.spamhaus.org/drop/edrop.txt\\"},{\\"url\\":\\"https://check.torproject.org/exit-addresses\\", \\"prefix\\":\\"ExitAddress\\"},{\\"url\\":\\"https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt\\"}]",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "reputation-lists.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -5374,6 +5399,11 @@ Object {
             "SOLUTION_ID": "SO8128",
           },
         },
+        "ImageConfig": Object {
+          "Command": Array [
+            "custom-resource.lambda_handler",
+          ],
+        },
         "MemorySize": 512,
         "PackageType": "Image",
         "Role": Object {
@@ -5682,6 +5712,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SECONDS": "2",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "timer.lambda_handler",
+          ],
         },
         "MemorySize": 128,
         "PackageType": "Image",
@@ -6058,6 +6093,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SCOPE": "REGIONAL",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "helper.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -7066,6 +7106,11 @@ Object {
             },
             "URL_LIST": "[{\\"url\\":\\"https://www.spamhaus.org/drop/drop.txt\\"},{\\"url\\":\\"https://www.spamhaus.org/drop/edrop.txt\\"},{\\"url\\":\\"https://check.torproject.org/exit-addresses\\", \\"prefix\\":\\"ExitAddress\\"},{\\"url\\":\\"https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt\\"}]",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "reputation-lists.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -9547,6 +9592,11 @@ Object {
             "SOLUTION_ID": "SO8128",
           },
         },
+        "ImageConfig": Object {
+          "Command": Array [
+            "custom-resource.lambda_handler",
+          ],
+        },
         "MemorySize": 512,
         "PackageType": "Image",
         "Role": Object {
@@ -9855,6 +9905,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SECONDS": "2",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "timer.lambda_handler",
+          ],
         },
         "MemorySize": 128,
         "PackageType": "Image",
@@ -10231,6 +10286,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SCOPE": "REGIONAL",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "helper.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -11239,6 +11299,11 @@ Object {
             },
             "URL_LIST": "[{\\"url\\":\\"https://www.spamhaus.org/drop/drop.txt\\"},{\\"url\\":\\"https://www.spamhaus.org/drop/edrop.txt\\"},{\\"url\\":\\"https://check.torproject.org/exit-addresses\\", \\"prefix\\":\\"ExitAddress\\"},{\\"url\\":\\"https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt\\"}]",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "reputation-lists.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -13716,6 +13781,11 @@ Object {
             "SOLUTION_ID": "SO8128",
           },
         },
+        "ImageConfig": Object {
+          "Command": Array [
+            "custom-resource.lambda_handler",
+          ],
+        },
         "MemorySize": 512,
         "PackageType": "Image",
         "Role": Object {
@@ -14024,6 +14094,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SECONDS": "2",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "timer.lambda_handler",
+          ],
         },
         "MemorySize": 128,
         "PackageType": "Image",
@@ -14400,6 +14475,11 @@ Object {
             "LOG_LEVEL": "DEBUG",
             "SCOPE": "REGIONAL",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "helper.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
@@ -15408,6 +15488,11 @@ Object {
             },
             "URL_LIST": "[{\\"url\\":\\"https://www.spamhaus.org/drop/drop.txt\\"},{\\"url\\":\\"https://www.spamhaus.org/drop/edrop.txt\\"},{\\"url\\":\\"https://check.torproject.org/exit-addresses\\", \\"prefix\\":\\"ExitAddress\\"},{\\"url\\":\\"https://rules.emergingthreats.net/fwrules/emerging-Block-IPs.txt\\"}]",
           },
+        },
+        "ImageConfig": Object {
+          "Command": Array [
+            "reputation-lists.lambda_handler",
+          ],
         },
         "MemorySize": 512,
         "PackageType": "Image",
