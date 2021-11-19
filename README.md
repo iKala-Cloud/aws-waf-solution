@@ -30,7 +30,7 @@ const envUSEast1 = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-new cdk.Stack(app, 'TestStackAutomatedWafForCloudFront', { env: envUSEast1 });
+const stackTest1 = new cdk.Stack(app, 'TestStackAutomatedWafForCloudFront', { env: envUSEast1 });
 
 new AutomatedWaf(stackTest1, 'AutomatedWaf', {
   waf2Scope: Waf2ScopeOption.CLOUDFRONT,
@@ -79,7 +79,7 @@ const env = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-new cdk.Stack(app, 'TestStackAutomatedWafForALB', { env });
+const stackTest2 = new cdk.Stack(app, 'TestStackAutomatedWafForALB', { env });
 
 const albArn = `arn:aws:elasticloadbalancing:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:loadbalancer/app/ApiNe-Alb16-2VIC9075YQEZ/db92cdc88d2e7c9d`;
 
@@ -117,7 +117,7 @@ const env = {
   account: process.env.CDK_DEFAULT_ACCOUNT,
 };
 
-new cdk.Stack(app, 'TestStackAutomatedWafForApiGW', { env });
+const stackTest3 = new cdk.Stack(app, 'TestStackAutomatedWafForApiGW', { env });
 
 /**
  * Ref Stage arn in https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
