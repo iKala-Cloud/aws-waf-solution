@@ -1,19 +1,19 @@
 const {
-  AwsCdkConstructLibrary,
+  awscdk,
   Gitpod,
   DevEnvironmentDockerImage,
-  NpmAccess,
+  javascript,
 } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
-const project = new AwsCdkConstructLibrary({
+const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Chris Yang',
   authorUrl: 'https://9incloud.com/',
   cdkVersion: '1.123.0',
   defaultReleaseBranch: 'main',
   name: '@ikala-cloud/aws-waf-solution',
-  npmAccess: NpmAccess.PUBLIC,
+  npmAccess: javascript.NpmAccess.PUBLIC,
   repositoryUrl: 'https://github.com/iKala-Cloud/aws-waf-solution',
   description: 'Cloudfront,ALB and API Gateway with Automated WAF',
   cdkDependencies: [
