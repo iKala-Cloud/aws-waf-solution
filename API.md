@@ -14,7 +14,7 @@ new AutomatedWaf(scope: Construct, id: string, props: AutomatedWafProps)
 
 ##### `scope`<sup>Required</sup> <a name="@ikala-cloud/aws-waf-solution.AutomatedWaf.parameter.scope"></a>
 
-- *Type:* [`@aws-cdk/core.Construct`](#@aws-cdk/core.Construct)
+- *Type:* [`constructs.Construct`](#constructs.Construct)
 
 ---
 

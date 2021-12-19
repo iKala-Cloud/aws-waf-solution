@@ -12,7 +12,7 @@ const project = new awscdk.AwsCdkConstructLibrary({
   name: '@ikala-cloud/aws-waf-solution',
   author: 'Chris Yang',
   authorUrl: 'https://9incloud.com/',
-  cdkVersion: '2.1.0',
+  cdkVersion: '2.2.0',
   majorVersion: 2,
   defaultReleaseBranch: 'main',
   releaseBranches: {
