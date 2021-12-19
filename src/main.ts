@@ -1,19 +1,20 @@
 import * as path from 'path';
-import * as apigateway from '@aws-cdk/aws-apigateway';
-import * as athena from '@aws-cdk/aws-athena';
-import * as cloudwatch from '@aws-cdk/aws-cloudwatch';
-import * as events from '@aws-cdk/aws-events';
-import * as targets from '@aws-cdk/aws-events-targets';
-import * as glue from '@aws-cdk/aws-glue';
-import * as iam from '@aws-cdk/aws-iam';
-import * as firehose from '@aws-cdk/aws-kinesisfirehose';
-import * as lambda from '@aws-cdk/aws-lambda';
-import * as s3 from '@aws-cdk/aws-s3';
-import * as s3n from '@aws-cdk/aws-s3-notifications';
-import * as wafv2 from '@aws-cdk/aws-wafv2';
-import * as cdk from '@aws-cdk/core';
-import { CustomResource } from '@aws-cdk/core';
-import * as cr from '@aws-cdk/custom-resources';
+import * as glue from '@aws-cdk/aws-glue-alpha';
+import * as cdk from 'aws-cdk-lib';
+import * as apigateway from 'aws-cdk-lib/aws-apigateway';
+import * as athena from 'aws-cdk-lib/aws-athena';
+import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
+import * as cfnGlue from 'aws-cdk-lib/aws-glue';
+import * as iam from 'aws-cdk-lib/aws-iam';
+import * as firehose from 'aws-cdk-lib/aws-kinesisfirehose';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as s3 from 'aws-cdk-lib/aws-s3';
+import * as s3n from 'aws-cdk-lib/aws-s3-notifications';
+import * as wafv2 from 'aws-cdk-lib/aws-wafv2';
+import * as cr from 'aws-cdk-lib/custom-resources';
+import { Construct } from 'constructs';
 
 export enum Waf2ScopeOption {
   CLOUDFRONT = 'CLOUDFRONT',
@@ -119,12 +120,11 @@ export interface AutomatedWafProps {
   readonly appAccessLogBucketName?: string;
 }
 
-export class AutomatedWaf extends cdk.Construct {
-  constructor(scope: cdk.Construct, id: string, props: AutomatedWafProps) {
+export class AutomatedWaf extends Construct {
+  constructor(scope: Construct, id: string, props: AutomatedWafProps) {
     super(scope, id);
 
     const stack = cdk.Stack.of(this);
-
     if (
       props.resourceNamingPrefix &&
       !this.validateResourceNamingPrefix(props.resourceNamingPrefix)
@@ -1452,7 +1452,7 @@ export class AutomatedWaf extends cdk.Construct {
     // });
 
     if (props.waf2Scope == Waf2ScopeOption.CLOUDFRONT) {
-      new glue.CfnTable(this, 'glueAppAccessLogsTable', {
+      new cfnGlue.CfnTable(this, 'glueAppAccessLogsTable', {
         databaseName: glueAccessLogsDatabase.databaseName,
         catalogId: cdk.Aws.ACCOUNT_ID,
         tableInput: {
@@ -1608,7 +1608,7 @@ export class AutomatedWaf extends cdk.Construct {
       });
     } else {
       // glue access log format for Alb
-      new glue.CfnTable(this, 'glueAppAccessLogsTable', {
+      new cfnGlue.CfnTable(this, 'glueAppAccessLogsTable', {
         databaseName: glueAccessLogsDatabase.databaseName,
         catalogId: cdk.Aws.ACCOUNT_ID,
         tableInput: {
@@ -2276,7 +2276,7 @@ export class AutomatedWaf extends cdk.Construct {
       }
     );
 
-    new CustomResource(this, 'ConfigureAWSWAFLogs', {
+    new cdk.CustomResource(this, 'ConfigureAWSWAFLogs', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::ConfigureAWSWAFLogs',
       properties: {
@@ -2285,7 +2285,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'ConfigureAppAccessLogBucket', {
+    new cdk.CustomResource(this, 'ConfigureAppAccessLogBucket', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::ConfigureAppAccessLogBucket',
       properties: {
@@ -2297,7 +2297,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'ConfigureWafLogBucket', {
+    new cdk.CustomResource(this, 'ConfigureWafLogBucket', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::ConfigureWafLogBucket',
       properties: {
@@ -2308,7 +2308,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'ConfigureWebAcl', {
+    new cdk.CustomResource(this, 'ConfigureWebAcl', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::ConfigureWebAcl',
       properties: {
@@ -2317,7 +2317,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'GenerateAppLogParserConfFile', {
+    new cdk.CustomResource(this, 'GenerateAppLogParserConfFile', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::GenerateAppLogParserConfFile',
       properties: {
@@ -2328,7 +2328,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'GenerateWafLogParserConfFile', {
+    new cdk.CustomResource(this, 'GenerateWafLogParserConfFile', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::GenerateWafLogParserConfFile',
       properties: {
@@ -2339,7 +2339,7 @@ export class AutomatedWaf extends cdk.Construct {
       },
     });
 
-    new CustomResource(this, 'AddAthenaPartitions', {
+    new cdk.CustomResource(this, 'AddAthenaPartitions', {
       serviceToken: customResourceProvider.serviceToken,
       resourceType: 'Custom::AddAthenaPartitions',
       properties: {

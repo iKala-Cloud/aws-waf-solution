@@ -3,57 +3,34 @@ const {
   Gitpod,
   DevEnvironmentDockerImage,
   javascript,
+  JsonFile,
 } = require('projen');
 
 const AUTOMATION_TOKEN = 'PROJEN_GITHUB_TOKEN';
 
 const project = new awscdk.AwsCdkConstructLibrary({
+  name: '@ikala-cloud/aws-waf-solution',
   author: 'Chris Yang',
   authorUrl: 'https://9incloud.com/',
-  cdkVersion: '1.123.0',
+  cdkVersion: '2.1.0',
+  majorVersion: 2,
   defaultReleaseBranch: 'main',
-  name: '@ikala-cloud/aws-waf-solution',
+  releaseBranches: {
+    cdkv1: { npmDistTag: 'cdkv1', majorVersion: 1 },
+  },
+  workflowNodeVersion: '14.17.0',
+  peerDeps: [
+    '@aws-cdk/aws-glue-alpha@^2.2.0-alpha.0',
+  ],
+  devDeps: [
+    'aws-cdk',
+    'ts-node',
+  ],
   npmAccess: javascript.NpmAccess.PUBLIC,
   repositoryUrl: 'https://github.com/iKala-Cloud/aws-waf-solution',
   description: 'Cloudfront,ALB and API Gateway with Automated WAF',
-  cdkDependencies: [
-    '@aws-cdk/core',
-    '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-lambda',
-    '@aws-cdk/aws-s3',
-    '@aws-cdk/aws-kinesisfirehose',
-    '@aws-cdk/aws-glue',
-    '@aws-cdk/aws-athena',
-    '@aws-cdk/aws-wafv2',
-    '@aws-cdk/aws-cloudwatch',
-    '@aws-cdk/aws-events',
-    '@aws-cdk/aws-events-targets',
-    '@aws-cdk/aws-s3-notifications',
-    '@aws-cdk/custom-resources',
-    '@aws-cdk/aws-apigateway',
-    '@aws-cdk/aws-cloudfront',
-    '@aws-cdk/aws-apigateway',
-  ],
-  peerDeps: [
-    '@aws-cdk/core',
-    '@aws-cdk/aws-iam',
-    '@aws-cdk/aws-lambda',
-    '@aws-cdk/aws-s3',
-    '@aws-cdk/aws-kinesisfirehose',
-    '@aws-cdk/aws-glue',
-    '@aws-cdk/aws-athena',
-    '@aws-cdk/aws-wafv2',
-    '@aws-cdk/aws-cloudwatch',
-    '@aws-cdk/aws-events',
-    '@aws-cdk/aws-events-targets',
-    '@aws-cdk/aws-s3-notifications',
-    '@aws-cdk/custom-resources',
-    '@aws-cdk/aws-apigateway',
-    '@aws-cdk/aws-cloudfront',
-    '@aws-cdk/aws-apigateway',
-  ],
   keywords: ['ikala', 'waf', 'cdk', 'solution'],
-  publishToPypi: {
+  python: {
     distName: 'ikala-cloud.aws-waf-solution',
     module: 'ikala-cloud.aws-waf-solution',
   },
@@ -73,6 +50,12 @@ const project = new awscdk.AwsCdkConstructLibrary({
     ignoreProjen: false,
   },
   release: true,
+});
+
+new JsonFile(project, 'cdk.json', {
+  obj: {
+    app: 'npx ts-node --prefer-ts-exts src/integ.default.ts',
+  },
 });
 
 project.eslint.addRules({

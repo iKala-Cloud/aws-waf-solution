@@ -53,29 +53,10 @@ Object {
     },
   },
   "Parameters": Object {
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1ArtifactHash0128B949": Object {
-      "Description": "Artifact hash for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D": Object {
-      "Description": "S3 bucket for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A": Object {
-      "Description": "S3 key for asset version \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
-      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
-      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
-      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -328,19 +309,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function adds a new hourly partition to athena table. It runs every hour, triggered by a CloudWatch event.",
@@ -837,19 +806,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:6dab48c81d3846aba1c94e157a4fbf6750d5af55649e300b72470c5d4c294a98",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:d578f92752042833fb3e90938002a478179fd7e66b97fbae7b68bfaf08b44397",
           },
         },
         "Description": "This lambda function will intercepts and inspects trap endpoint requests to extract its IP address, and then add it to an AWS WAF block list.",
@@ -1190,19 +1147,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:1dfede2ffdae0c9f1a24b4891809f4236502614eec71989bedcf18c778964184",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:573970b8baf3809f0e6bd631687fae8b480279e67205753178a0c7f1298be3b4",
           },
         },
         "Description": "This lambda function configures the Web ACL rules based on the features enabled in the CloudFormation template.",
@@ -1502,19 +1447,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:7e55e8e738134b4ceb0aa8b7b4be156c25b8efe41bf478903e4912c83cbc373a",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:bb5df9a372cd5f468a2ef25c0f21e90e8b4b33b1a2a26693fe5b5bb0b1520eae",
           },
         },
         "Description": "This lambda function counts X seconds and can be used to slow down component creation in CloudFormation",
@@ -1879,19 +1812,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:eb7852c09e371e910ae5de85d56cae5e2cb4c0d85e522715e1125d5941307e71",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:a3d2bd3c943ac1d60d83d83db014d13e0cb67371f4704c200fcf7115e1a344d8",
           },
         },
         "Description": "This lambda function verifies the main project's dependencies, requirements and implement auxiliary functions.",
@@ -2054,19 +1975,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function parses access logs to identify suspicious behavior, such as an abnormal amount of errors. It then blocks those IP addresses for a customer-defined period of time.",
@@ -2675,19 +2584,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function is triggered by S3 event to move log files(upon their arrival in s3) from their original location to a partitioned folder structure created per timestamps in file names, hence allowing the usage of partitioning within AWS Athena.",
@@ -2819,19 +2716,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.us-east-1.",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:b5dbbe39524d51c3b8aae20b2d5c91794d39f96b66f100c27591e6ba9d425326",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.us-east-1.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-us-east-1:6c24004099c09da2d1840555393c3bb69834113e8b391fbc837fb096a58efd18",
           },
         },
         "Description": "This lambda function checks third-party IP reputation lists hourly for new IP ranges to block. These lists include the Spamhaus Dont Route Or Peer (DROP) and Extended Drop (EDROP) lists, the Proofpoint Emerging Threats IP list, and the Tor exit node list.",
@@ -3289,41 +3174,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (TestStackAutomatedWafForCloudFront/AutomatedWaf/customResourceProvider)",
         "Environment": Object {
@@ -4549,41 +4402,9 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-us-east-1",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
@@ -4633,6 +4454,33 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Type": "AWS::IAM::Role",
     },
   },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
 }
 `;
 
@@ -4667,29 +4515,10 @@ Object {
     },
   },
   "Parameters": Object {
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1ArtifactHash0128B949": Object {
-      "Description": "Artifact hash for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D": Object {
-      "Description": "S3 bucket for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A": Object {
-      "Description": "S3 key for asset version \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
-      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
-      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
-      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -5021,23 +4850,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function adds a new hourly partition to athena table. It runs every hour, triggered by a CloudWatch event.",
@@ -5371,23 +5184,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:1dfede2ffdae0c9f1a24b4891809f4236502614eec71989bedcf18c778964184",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:573970b8baf3809f0e6bd631687fae8b480279e67205753178a0c7f1298be3b4",
           },
         },
         "Description": "This lambda function configures the Web ACL rules based on the features enabled in the CloudFormation template.",
@@ -5687,23 +5484,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:7e55e8e738134b4ceb0aa8b7b4be156c25b8efe41bf478903e4912c83cbc373a",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:bb5df9a372cd5f468a2ef25c0f21e90e8b4b33b1a2a26693fe5b5bb0b1520eae",
           },
         },
         "Description": "This lambda function counts X seconds and can be used to slow down component creation in CloudFormation",
@@ -6068,23 +5849,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:eb7852c09e371e910ae5de85d56cae5e2cb4c0d85e522715e1125d5941307e71",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:a3d2bd3c943ac1d60d83d83db014d13e0cb67371f4704c200fcf7115e1a344d8",
           },
         },
         "Description": "This lambda function verifies the main project's dependencies, requirements and implement auxiliary functions.",
@@ -6247,23 +6012,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function parses access logs to identify suspicious behavior, such as an abnormal amount of errors. It then blocks those IP addresses for a customer-defined period of time.",
@@ -6880,23 +6629,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function is triggered by S3 event to move log files(upon their arrival in s3) from their original location to a partitioned folder structure created per timestamps in file names, hence allowing the usage of partitioning within AWS Athena.",
@@ -7028,23 +6761,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:b5dbbe39524d51c3b8aae20b2d5c91794d39f96b66f100c27591e6ba9d425326",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:6c24004099c09da2d1840555393c3bb69834113e8b391fbc837fb096a58efd18",
           },
         },
         "Description": "This lambda function checks third-party IP reputation lists hourly for new IP ranges to block. These lists include the Spamhaus Dont Route Or Peer (DROP) and Extended Drop (EDROP) lists, the Proofpoint Emerging Threats IP list, and the Tor exit node list.",
@@ -7502,41 +7219,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (TestStackAutomatedWafForALB/AutomatedWaf/customResourceProvider)",
         "Environment": Object {
@@ -8742,41 +8427,9 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
@@ -8826,6 +8479,33 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Type": "AWS::IAM::Role",
     },
   },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
 }
 `;
 
@@ -8860,29 +8540,10 @@ Object {
     },
   },
   "Parameters": Object {
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1ArtifactHash0128B949": Object {
-      "Description": "Artifact hash for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D": Object {
-      "Description": "S3 bucket for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A": Object {
-      "Description": "S3 key for asset version \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
-      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
-      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
-      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -9214,23 +8875,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function adds a new hourly partition to athena table. It runs every hour, triggered by a CloudWatch event.",
@@ -9564,23 +9209,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:1dfede2ffdae0c9f1a24b4891809f4236502614eec71989bedcf18c778964184",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:573970b8baf3809f0e6bd631687fae8b480279e67205753178a0c7f1298be3b4",
           },
         },
         "Description": "This lambda function configures the Web ACL rules based on the features enabled in the CloudFormation template.",
@@ -9880,23 +9509,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:7e55e8e738134b4ceb0aa8b7b4be156c25b8efe41bf478903e4912c83cbc373a",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:bb5df9a372cd5f468a2ef25c0f21e90e8b4b33b1a2a26693fe5b5bb0b1520eae",
           },
         },
         "Description": "This lambda function counts X seconds and can be used to slow down component creation in CloudFormation",
@@ -10261,23 +9874,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:eb7852c09e371e910ae5de85d56cae5e2cb4c0d85e522715e1125d5941307e71",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:a3d2bd3c943ac1d60d83d83db014d13e0cb67371f4704c200fcf7115e1a344d8",
           },
         },
         "Description": "This lambda function verifies the main project's dependencies, requirements and implement auxiliary functions.",
@@ -10440,23 +10037,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function parses access logs to identify suspicious behavior, such as an abnormal amount of errors. It then blocks those IP addresses for a customer-defined period of time.",
@@ -11073,23 +10654,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function is triggered by S3 event to move log files(upon their arrival in s3) from their original location to a partitioned folder structure created per timestamps in file names, hence allowing the usage of partitioning within AWS Athena.",
@@ -11221,23 +10786,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:b5dbbe39524d51c3b8aae20b2d5c91794d39f96b66f100c27591e6ba9d425326",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:6c24004099c09da2d1840555393c3bb69834113e8b391fbc837fb096a58efd18",
           },
         },
         "Description": "This lambda function checks third-party IP reputation lists hourly for new IP ranges to block. These lists include the Spamhaus Dont Route Or Peer (DROP) and Extended Drop (EDROP) lists, the Proofpoint Emerging Threats IP list, and the Tor exit node list.",
@@ -11695,41 +11244,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (TestStackAutomatedWafForApiGW/AutomatedWaf/customResourceProvider)",
         "Environment": Object {
@@ -12931,41 +12448,9 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
@@ -13015,6 +12500,33 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Type": "AWS::IAM::Role",
     },
   },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
+    },
+  },
 }
 `;
 
@@ -13049,29 +12561,10 @@ Object {
     },
   },
   "Parameters": Object {
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1ArtifactHash0128B949": Object {
-      "Description": "Artifact hash for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D": Object {
-      "Description": "S3 bucket for asset \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A": Object {
-      "Description": "S3 key for asset version \\"1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cArtifactHash627DAAA7": Object {
-      "Description": "Artifact hash for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43": Object {
-      "Description": "S3 bucket for asset \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
-    },
-    "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7": Object {
-      "Description": "S3 key for asset version \\"c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c\\"",
-      "Type": "String",
+    "BootstrapVersion": Object {
+      "Default": "/cdk-bootstrap/hnb659fds/version",
+      "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]",
+      "Type": "AWS::SSM::Parameter::Value<String>",
     },
   },
   "Resources": Object {
@@ -13403,23 +12896,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function adds a new hourly partition to athena table. It runs every hour, triggered by a CloudWatch event.",
@@ -13753,23 +13230,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:1dfede2ffdae0c9f1a24b4891809f4236502614eec71989bedcf18c778964184",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:573970b8baf3809f0e6bd631687fae8b480279e67205753178a0c7f1298be3b4",
           },
         },
         "Description": "This lambda function configures the Web ACL rules based on the features enabled in the CloudFormation template.",
@@ -14069,23 +13530,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:7e55e8e738134b4ceb0aa8b7b4be156c25b8efe41bf478903e4912c83cbc373a",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:bb5df9a372cd5f468a2ef25c0f21e90e8b4b33b1a2a26693fe5b5bb0b1520eae",
           },
         },
         "Description": "This lambda function counts X seconds and can be used to slow down component creation in CloudFormation",
@@ -14450,23 +13895,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:eb7852c09e371e910ae5de85d56cae5e2cb4c0d85e522715e1125d5941307e71",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:a3d2bd3c943ac1d60d83d83db014d13e0cb67371f4704c200fcf7115e1a344d8",
           },
         },
         "Description": "This lambda function verifies the main project's dependencies, requirements and implement auxiliary functions.",
@@ -14629,23 +14058,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function parses access logs to identify suspicious behavior, such as an abnormal amount of errors. It then blocks those IP addresses for a customer-defined period of time.",
@@ -15262,23 +14675,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:a1dbf41675e1b0318048d55ff15272b2269c0e349a10847b20d4788aa85916d8",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:c5d48b92488523c034d33a7720f0306a495e1eeb2d00c7b81f37dff7e13433f1",
           },
         },
         "Description": "This function is triggered by S3 event to move log files(upon their arrival in s3) from their original location to a partitioned folder structure created per timestamps in file names, hence allowing the usage of partitioning within AWS Athena.",
@@ -15410,23 +14807,7 @@ Object {
       "Properties": Object {
         "Code": Object {
           "ImageUri": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Ref": "AWS::AccountId",
-                },
-                ".dkr.ecr.",
-                Object {
-                  "Ref": "AWS::Region",
-                },
-                ".",
-                Object {
-                  "Ref": "AWS::URLSuffix",
-                },
-                "/aws-cdk/assets:b5dbbe39524d51c3b8aae20b2d5c91794d39f96b66f100c27591e6ba9d425326",
-              ],
-            ],
+            "Fn::Sub": "\${AWS::AccountId}.dkr.ecr.\${AWS::Region}.\${AWS::URLSuffix}/cdk-hnb659fds-container-assets-\${AWS::AccountId}-\${AWS::Region}:6c24004099c09da2d1840555393c3bb69834113e8b391fbc837fb096a58efd18",
           },
         },
         "Description": "This lambda function checks third-party IP reputation lists hourly for new IP ranges to block. These lists include the Spamhaus Dont Route Or Peer (DROP) and Extended Drop (EDROP) lists, the Proofpoint Emerging Threats IP list, and the Tor exit node list.",
@@ -15884,41 +15265,9 @@ Object {
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3BucketEAC9DD43",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParametersc691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49cS3VersionKeyDD9AE9E7",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "c691172cdeefa2c91b5a2907f9d81118e47597634943344795f1a844192dd49c.zip",
         },
         "Description": "AWS CDK resource provider framework - onEvent (TestStackAutomatedWafForALBOnCountMode/AutomatedWaf/customResourceProvider)",
         "Environment": Object {
@@ -17097,41 +16446,9 @@ def submit_response(event: dict, context, response_status: str, error_message: s
       "Properties": Object {
         "Code": Object {
           "S3Bucket": Object {
-            "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3Bucket4842F32D",
+            "Fn::Sub": "cdk-hnb659fds-assets-\${AWS::AccountId}-\${AWS::Region}",
           },
-          "S3Key": Object {
-            "Fn::Join": Array [
-              "",
-              Array [
-                Object {
-                  "Fn::Select": Array [
-                    0,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-                Object {
-                  "Fn::Select": Array [
-                    1,
-                    Object {
-                      "Fn::Split": Array [
-                        "||",
-                        Object {
-                          "Ref": "AssetParameters1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1S3VersionKeyD0A0B57A",
-                        },
-                      ],
-                    },
-                  ],
-                },
-              ],
-            ],
-          },
+          "S3Key": "1f7e277bd526ebce1983fa1e7a84a5281ec533d9187caaebb773681bbf7bf4c1.zip",
         },
         "Description": Object {
           "Fn::Join": Array [
@@ -17179,6 +16496,33 @@ def submit_response(event: dict, context, response_status: str, error_message: s
         ],
       },
       "Type": "AWS::IAM::Role",
+    },
+  },
+  "Rules": Object {
+    "CheckBootstrapVersion": Object {
+      "Assertions": Array [
+        Object {
+          "Assert": Object {
+            "Fn::Not": Array [
+              Object {
+                "Fn::Contains": Array [
+                  Array [
+                    "1",
+                    "2",
+                    "3",
+                    "4",
+                    "5",
+                  ],
+                  Object {
+                    "Ref": "BootstrapVersion",
+                  },
+                ],
+              },
+            ],
+          },
+          "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI.",
+        },
+      ],
     },
   },
 }

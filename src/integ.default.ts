@@ -1,10 +1,10 @@
-import * as cdk from '@aws-cdk/core';
+import { App, Stack, Aws } from 'aws-cdk-lib';
 import { AutomatedWaf, LogLevel, Waf2ScopeOption } from './index';
 
 export class IntegTesting {
-  readonly stack: cdk.Stack[];
+  readonly stack: Stack[];
   constructor() {
-    const app = new cdk.App();
+    const app = new App();
 
     const envUSEast1 = {
       region: 'us-east-1',
@@ -14,7 +14,7 @@ export class IntegTesting {
     /**
      * Test WAF for CloudFront
      */
-    const stackTest1 = new cdk.Stack(app, 'TestStackAutomatedWafForCloudFront', { env: envUSEast1 });
+    const stackTest1 = new Stack(app, 'TestStackAutomatedWafForCloudFront', { env: envUSEast1 });
 
     new AutomatedWaf(stackTest1, 'AutomatedWaf', {
       waf2Scope: Waf2ScopeOption.CLOUDFRONT,
@@ -33,9 +33,9 @@ export class IntegTesting {
     /**
      * Test For ALB
      */
-    const stackTest2 = new cdk.Stack(app, 'TestStackAutomatedWafForALB', { env });
+    const stackTest2 = new Stack(app, 'TestStackAutomatedWafForALB', { env });
 
-    const albArn = `arn:aws:elasticloadbalancing:${cdk.Aws.REGION}:${cdk.Aws.ACCOUNT_ID}:loadbalancer/app/ApiNe-Alb16-2VIC9075YQEZ/db92cdc88d2e7c9d`;
+    const albArn = `arn:aws:elasticloadbalancing:${Aws.REGION}:${Aws.ACCOUNT_ID}:loadbalancer/app/ApiNe-Alb16-2VIC9075YQEZ/db92cdc88d2e7c9d`;
 
     new AutomatedWaf(stackTest2, 'AutomatedWaf', {
       waf2Scope: Waf2ScopeOption.REGIONAL,
@@ -51,12 +51,12 @@ export class IntegTesting {
     /**
      * Test For API Gateway
      */
-    const stackTest3 = new cdk.Stack(app, 'TestStackAutomatedWafForApiGW', { env });
+    const stackTest3 = new Stack(app, 'TestStackAutomatedWafForApiGW', { env });
 
     /**
      * Ref Stage arn in https://docs.aws.amazon.com/apigateway/latest/developerguide/arn-format-reference.html
      */
-    const restApiArn = `arn:aws:apigateway:${cdk.Aws.REGION}::/restapis/0j90w09yf9/stages/prod`;
+    const restApiArn = `arn:aws:apigateway:${Aws.REGION}::/restapis/0j90w09yf9/stages/prod`;
 
     new AutomatedWaf(stackTest3, 'AutomatedWaf', {
       waf2Scope: Waf2ScopeOption.REGIONAL,
@@ -72,7 +72,7 @@ export class IntegTesting {
     /**
      * Test For ALB on count mode
      */
-    const stackTest4 = new cdk.Stack(app, 'TestStackAutomatedWafForALBOnCountMode', { env });
+    const stackTest4 = new Stack(app, 'TestStackAutomatedWafForALBOnCountMode', { env });
 
     new AutomatedWaf(stackTest4, 'AutomatedWaf', {
       waf2Scope: Waf2ScopeOption.REGIONAL,
