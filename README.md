@@ -18,6 +18,28 @@ The solution use CDK construct to automatically deploy a set of AWS WAF rules de
 
 - AWS Shield Advance is optional (The origin repository enforce to enable it)
 
+## Support CDKv1 and CDKv2
+
+#### CDKv2
+
+```
+npm install @ikala-cloud/aws-waf-solution
+or
+npm install @ikala-cloud/aws-waf-solution@latest
+or
+npm install @ikala-cloud/aws-waf-solution@^2.0.0
+```
+
+
+#### CDKv1
+
+```
+npm install @ikala-cloud/aws-waf-solution@cdkv1 
+or
+npm install @ikala-cloud/aws-waf-solution@^1.0.38
+```
+
+
 ## Construct Props
 
 Ref [API Reference](API.md)
