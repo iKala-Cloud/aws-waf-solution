@@ -2,6 +2,10 @@
 [![PyPI version](https://badge.fury.io/py/ikala-cloud.aws-waf-solution.svg)](https://badge.fury.io/py/ikala-cloud.aws-waf-solution)
 [![release](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml/badge.svg)](https://github.com/iKala-Cloud/aws-waf-solution/actions/workflows/release.yml)
 
+
+:warning: This branch support cdk version 1 only, check [here](https://github.com/iKala-Cloud/aws-waf-solution) if you use cdk version 2.
+
+
 # AWS WAF Solution
 
 This CDK Construct modify and rebuild from [Cloudfront with Automated WAF](https://github.com/awslabs/aws-cloudfront-extensions/tree/main/templates/aws-cloudfront-waf).
