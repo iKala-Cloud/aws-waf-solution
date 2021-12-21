@@ -40,6 +40,7 @@ junit.xml
 /dist/changelog.md
 /dist/version.txt
 !/.github/workflows/release.yml
+!/.github/workflows/release-cdkv1.yml
 !/.mergify.yml
 !/.github/pull_request_template.md
 !/test/
@@ -59,3 +60,4 @@ dependabot.yml
 !/lambda/codepipeline-event/tsconfig.json
 !/.gitpod.yml
 !/.github/workflows/upgrade-main.yml
+!/.github/workflows/upgrade-cdkv1.yml

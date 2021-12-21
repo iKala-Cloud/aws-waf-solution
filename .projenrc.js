@@ -11,6 +11,17 @@ const project = new awscdk.AwsCdkConstructLibrary({
   author: 'Chris Yang',
   authorUrl: 'https://9incloud.com/',
   cdkVersion: '1.123.0',
+  /**
+   * we default release the main branch(cdkv2) with major version 2.
+   */
+  majorVersion: 2,
+  defaultReleaseBranch: 'master',
+  /**
+   * we also release the cdkv1 branch with major version 1.
+   */
+  releaseBranches: {
+    cdkv1: { npmDistTag: 'cdkv1', majorVersion: 1 },
+  },
   defaultReleaseBranch: 'main',
   name: '@ikala-cloud/aws-waf-solution',
   npmAccess: javascript.NpmAccess.PUBLIC,
