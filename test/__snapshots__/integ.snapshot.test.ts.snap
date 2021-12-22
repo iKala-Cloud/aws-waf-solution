@@ -621,6 +621,9 @@ Object {
       "Type": "AWS::ApiGateway::Deployment",
     },
     "AutomatedWafApiGatewayBadBotDeploymentStageprod27418F36": Object {
+      "DependsOn": Array [
+        "AutomatedWafApiGatewayBadBotAccount8FD75CD3",
+      ],
       "Properties": Object {
         "DeploymentId": Object {
           "Ref": "AutomatedWafApiGatewayBadBotDeployment3D9229DDa268e15c2e8b86500b1466f1cd56c826",
