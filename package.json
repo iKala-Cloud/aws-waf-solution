@@ -58,7 +58,7 @@
     "jsii-docgen": "^3.8.31",
     "json-schema": "^0.4.0",
     "npm-check-updates": "^12",
-    "projen": "0.46.3",
+    "projen": "0.47.14",
     "standard-version": "^9",
     "ts-jest": "^27.1.2",
     "ts-node": "^10.4.0",
@@ -69,7 +69,6 @@
     "aws-cdk-lib": "^2.2.0",
     "constructs": "^10.0.5"
   },
-  "bundledDependencies": [],
   "keywords": [
     "cdk",
     "ikala",
